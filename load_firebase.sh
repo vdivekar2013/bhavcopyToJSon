@@ -22,8 +22,11 @@ done
 if [ $status1 -eq 200 ]; then
 	echo 'Successfully read bhavcopy'
 	echo 'Uploading data to firebase'
-	curl -X DELETE https://testhub-1f083.firebaseio.com/instruments.json
-	curl -X PUT -d @fo_bhav.json https://testhub-1f083.firebaseio.com/instruments.json
+	java -jar ./target/bhavcopyToJSon-0.0.1-SNAPSHOT.jar
+#	curl -X DELETE https://testhub-1f083.firebaseio.com/instruments.json
+#	curl -X PUT -d @fo_bhav.json https://testhub-1f083.firebaseio.com/instruments.json
+	curl -X DELETE https://nitrohub-9226a.firebaseio.com/instruments.json
+	curl -X PUT -d @fo_bhav.json https://nitrohub-9226a.firebaseio.com/instruments.json
 else
 	echo 'Either of the file reading failed'
 fi
